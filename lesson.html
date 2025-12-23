@@ -3,12 +3,112 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>课程简介</title>
-    <link rel="stylesheet" href="css/lesson.css">
+    <title>课程简介 - 信息技术学院</title>
+    <link rel="stylesheet" href="lesson.css">
+    <style>
+        /* 简单的内联样式，确保页面在没有额外样式文件时也能良好展示 */
+        body { font-family: Arial, "Microsoft YaHei", sans-serif; margin: 0; padding: 0; color: #333; }
+        .container { max-width: 980px; margin: 24px auto; padding: 0 16px; }
+        header { display:flex; align-items:center; gap:12px; }
+        header img { height:56px; }
+        nav.breadcrumb { margin: 12px 0; }
+        nav.breadcrumb a { color:#0066cc; text-decoration:none; margin-right:12px; }
+        .courses { display:grid; grid-template-columns: repeat(auto-fit,minmax(220px,1fr)); gap:18px; margin-top:16px; }
+        .course { border:1px solid #e6e6e6; border-radius:8px; padding:12px; background:#fff; box-shadow:0 1px 3px rgba(0,0,0,0.04); }
+        .course img { width:100%; height:140px; object-fit:cover; border-radius:4px; }
+        .course h3 { margin:10px 0 6px; font-size:1.05rem; }
+        .course p { margin:6px 0; line-height:1.5; font-size:0.95rem; }
+        .syllabus { margin-top:8px; padding-left:18px; }
+        footer { margin:28px 0; color:#666; font-size:0.9rem; }
+        .back { display:inline-block; margin-top:8px; }
+    </style>
 </head>
 <body>
-    <h5>标题1</h5>
-    <h4>标题2</h4>
-    <h3>标题3</h3>
+    <div class="container">
+        <header>
+            <img src="images/logo_1.png" alt="学院 logo">
+            <div>
+                <h1 style="margin:0; font-size:1.4rem;">信息技术学院 — 课程简介</h1>
+                <div style="color:#666; font-size:0.95rem;">面向应用的计算机课程，培养实践与创新能力</div>
+            </div>
+        </header>
+
+        <nav class="breadcrumb">
+            <a href="./index.html">← 返回首页</a>
+            <span> / 课程简介</span>
+        </nav>
+
+        <main>
+            <section class="courses">
+                <article class="course">
+                    <img src="images/AIGC.png" alt="AIGC与信息技术">
+                    <h3>AIGC 与信息技术</h3>
+                    <p>本课程介绍人工智能生成内容（AIGC）的基本概念、关键技术与应用场景，涵盖文本、图像、音频与代码生成技术。</p>
+                    <div class="syllabus">
+                        <strong>主要内容：</strong>
+                        <ul>
+                            <li>AIGC 概览与发展趋势</li>
+                            <li>生成模型基础（语言模型、扩散模型等）</li>
+                            <li>主流工具与平台实操</li>
+                            <li>伦理、隐私与应用案例分析</li>
+                        </ul>
+                    </div>
+                </article>
+
+                <article class="course">
+                    <img src="images/Web.jpg" alt="网页设计与制作">
+                    <h3>网页设计与制作（Web 前端设计）</h3>
+                    <p>面向现代前端开发的实践课程，覆盖 HTML、CSS、JavaScript 基础与响应式设计，带你从静态页面到交互式网站的实现。</p>
+                    <div class="syllabus">
+                        <strong>主要内容：</strong>
+                        <ul>
+                            <li>HTML 语义化与可访问性</li>
+                            <li>CSS 布局、Flexbox 与 Grid</li>
+                            <li>JavaScript 与 DOM 操作</li>
+                            <li>小型项目：个人主页或课程展示页</li>
+                        </ul>
+                    </div>
+                </article>
+
+                <article class="course">
+                    <img src="images/Python.png" alt="Python 程序设计">
+                    <h3>Python 程序设计</h3>
+                    <p>本课程从编程基础出发，使用 Python 语言教授算法思维、数据结构与常用库的使用，适合初学者与希望快速上手数据与自动化开发的同学。</p>
+                    <div class="syllabus">
+                        <strong>主要内容：</strong>
+                        <ul>
+                            <li>语法基础、控制结构与函数</li>
+                            <li>常用数据结构（列表、字典、集合）</li>
+                            <li>文件操作、异常处理与模块化编程</li>
+                            <li>入门数据分析与简单项目实践</li>
+                        </ul>
+                    </div>
+                </article>
+
+                <article class="course">
+                    <img src="images/AI_DL.png" alt="人工智能">
+                    <h3>人工智能（AI）</h3>
+                    <p>介绍人工智能与深度学习的基础概念、常用模型与应用，包括机器学习流程、神经网络基础与实际案例分析。</p>
+                    <div class="syllabus">
+                        <strong>主要内容：</strong>
+                        <ul>
+                            <li>机器学习基础与评估方法</li>
+                            <li>神经网络与深度学习概念</li>
+                            <li>常见模型（CNN、RNN、Transformer）简介</li>
+                            <li>项目实战：小型图像/文本任务</li>
+                        </ul>
+                    </div>
+                </article>
+            </section>
+
+            <p style="margin-top:18px;">如果你想了解每门课程的详细大纲与考核方式，请联系课程负责人或查看课程资料页面。</p>
+            <a class="back" href="./index.html">返回首页</a>
+        </main>
+
+        <footer>
+            <p>信息技术学院 &nbsp;•&nbsp; 广州市沙太中路大源北28号</p>
+            <p>联系电话：(020)36783769</p>
+        </footer>
+    </div>
 </body>
 </html>
