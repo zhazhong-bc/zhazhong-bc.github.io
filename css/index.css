@@ -1,0 +1,201 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "黑体", sans-serif;
+}
+
+html, body {
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+/* 页头样式 */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: rgb(173, 216, 230);
+    border-bottom: 1px solid #ccc;
+}
+.header-left {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.header-left img {
+    height: 50px;
+}
+.school-name p {
+    color: #333;
+    line-height: 1.1;
+    font-size: 14px;
+}
+.school-name p:last-child {
+    font-size: 12px;
+    color: #666;
+}
+.header-right {
+    font-size: 22px;
+    font-weight: bold;
+    color: #0000cc;
+}
+
+
+/* 导航栏样式 */
+.nav {
+    background-color: #b8d94c;
+    padding: 8px 0;
+    text-align: center;
+    border-bottom: 1px solid #999;
+}
+.nav a {
+    color: #000;
+    text-decoration: underline;
+    margin: 0 12px;
+    font-size: 15px;
+}
+.nav a:hover {
+    color: #0066cc;
+}
+
+/* 主内容区整体样式 */
+.main {
+    display: flex;
+    flex: 1;
+    border: 1px solid #ccc;
+}
+
+/* 左侧列样式 */
+.left-col, .middle-col, .right-col {
+    padding: 10px;
+    background-color: #00ffff;
+    border-right: 1px solid #fff;
+}
+.left-col {
+    width: 35%;
+}
+
+/* 中间列样式 */
+.middle-col {
+    width: 30%;
+    text-align: center;
+}
+
+/* 右侧列样式 */
+.right-col {
+    width: 35%;
+    border-right:none;
+}
+
+/* 左侧课程项样式 */
+.course-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 12px;
+    cursor: pointer;
+}
+.course-item img {
+    width: 40%;
+    height: auto;
+}
+.course-item span {
+    font-size: 14px;
+}
+
+/* 中间列图片和文字样式 */
+.middle-col img {
+    width: 90%;
+    margin: 0 auto 8px;
+}
+.middle-col p {
+    font-size: 15px;
+    line-height: 1.4;
+}
+
+/* 右侧列补充样式 */
+.right-col {
+    width: 35%;
+    border-right: none;
+}
+
+/* 右侧表单样式 */
+.right-col form {
+    border: 1px dashed #000;
+    padding: 15px;
+    margin: 0 auto;
+}
+
+.right-col label {
+    display: inline-block;
+    margin-bottom: 4px;
+    font-size: 14px;
+    color: #000;
+}
+
+.right-col input[type="text"],
+.right-col select,
+.right-col textarea {
+    width: 100%;
+    padding: 6px;
+    font-size: 14px;
+    border: 1px solid #0000ff;
+    box-sizing: border-box;
+}
+
+.right-col textarea {
+    height: 80px;
+    resize: none;
+}
+
+.right-col .radio-group {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+}
+.right-col .radio-label {
+    margin-bottom: 4px;
+}
+
+.right-col .checkbox-group {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+.right-col .checkbox-label {
+    margin-bottom: 4px;
+}
+
+
+.right-col .btn-row {
+    flex-direction: row-reverse;
+}
+.right-col input[type="submit"] {
+    width: auto;
+    padding: 5px 15px;
+    background-color: #0000ff;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+}
+
+
+img {
+    display: block;
+}
+
+/* 页脚样式 */
+.footer {
+    display: flex;
+    justify-content: space-between;
+    padding: 8px 20px;
+    background-color: #d1e0e0;
+    color: #333;
+    font-size: 14px;
+    border-top: 1px solid #ccc;
+    margin-bottom: 0;
+}
