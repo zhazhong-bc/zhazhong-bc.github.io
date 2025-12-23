@@ -12,7 +12,7 @@ html, body {
     display: flex;
     flex-direction: column;
 }
-/* 页头样式 */
+/* 头部样式 */
 .header {
     display: flex;
     justify-content: space-between;
