@@ -1,0 +1,13 @@
+.nav a[href="materials.html"] {color: blue; }
+.main {font-size: 22px; }
+.nav .active-materials {color:#0000ff;}
+.main {padding: 20px; background-color: #00ffff; }
+.contact-info {line-height: 1.8; margin-top: 10px; }
+.doc-list {margin-top: 20px; }
+.doc-list li {line-height: 1.8; }
+.more {
+    margin-bottom: 8px;
+    font-size: 1rem;
+    font-weight: bold;
+    color: #333;
+}
