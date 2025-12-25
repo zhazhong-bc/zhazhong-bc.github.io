@@ -27,7 +27,7 @@ html, body {
     gap: 10px;
 }
 .header-left img {
-    height: 50px;
+    height: 60px;
 }
 .school-name p {
     color: #333;
@@ -170,6 +170,23 @@ html, body {
     color: #fff;
     border: none;
     cursor: pointer;
+}
+.bgm-box {
+  margin-top: 15px;
+  text-align: right;
+}
+#bgmBtn {
+  padding: 4px 10px;
+  font-size: 14px;
+  border: 1px solid #0000ff;
+  background: #fff;
+  color: #0000ff;
+  cursor: pointer;
+  border-radius: 4px;
+}
+#bgmBtn.playing {
+  background: #0000ff;
+  color: #fff;
 }
 
 
