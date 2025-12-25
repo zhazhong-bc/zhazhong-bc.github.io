@@ -4,10 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>信息技术学院</title>
-    <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="./css/index.css">
+    <script src="./js/index-main.js"></script>
+    <style>
+    .nav .active-index {color:#0000ff;}
+    </style>
 </head>
 <body>
-    <header class="header">
+    <header class="header"> <!--页头-->
         <div class="header-left">
             <img src="./images/logo_1.png" alt="学院logo">
             <div class="school-name">
@@ -17,17 +21,16 @@
             <p>信息技术学院</p>
         </div>
     </header>
-<!--导航栏-->
+    <!--导航栏-->
     <nav class="nav">
-        <a href="./index.html" class="active">首页</a>
-        <a href="./lesson.html" class="active">课程简介</a>
-        <a href="#" class="active">课程资料</a>
-        <a href="#" class="active">联系我们</a>
+        <a href="./index.html" class="active-index">首页</a>
+        <a href="./lesson.html" class="active-lesson">课程简介</a>
+        <a href="./materials.html" class="active-materials">课程资料</a>
+        <a href="./contact.html" class="active-contact">联系我们</a>
     </nav>
 
     <main class="main">
-        <!--左侧内容-->
-        <section class="left-col">
+        <section class="left-col"> <!--左侧-->
             <div class="course-item">
                 <img src="./images/AIGC.png" alt="AIGC课程">
                 <span>AIGC与信息技术</span>
@@ -45,21 +48,20 @@
                 <span>人工智能</span>
             </div>
         </section>
-<!--中间内容-->
-<section class="middle-col">
-    <img src="images/windmill.jpg" alt="风车图">
-    <div style="padding:0.5%;">
-        <p>广州涉外经济职业技术学院是计算机人才的摇篮。</p>
-    </div>
-</section>
-        <!--右侧内容-->
+        <section class="middle-col"><!--中间-->
+            <img src="images/windmill.jpg" alt="风车图">
+            <div style="padding:0.5%;">
+                <p>广州涉外经济职业技术学院是计算机人才的摇篮。</p>
+            </div>
+        </section>
+        <!--右侧-->
         <section class="right-col">
             <form id="infoForm">
                 <label for="name">姓名：</label>
                 <input type="text" id="name" name="name"><br>
 
                 <label for="color">你最喜欢的颜色：</label>
-                <select id="color" name="color">
+                <select class="color-select" id="color" name="color">
                     <option value="red" selected>红</option>
                     <option value="blue">蓝</option>
                     <option value="green">绿</option>
@@ -89,32 +91,11 @@
     <!--页脚-->
     <footer class="footer">
         <p>地址：广州市沙太中路大源北28号</p>
+        <a href="https://zhazhong-bc.github.io/" target="_blank" class="online-link">
+        本站在线版(加载速度一般)
+        </a>
         <p>联系电话：(020)36783769</p>
     </footer>
-
-    <script>
-        document.getElementById('infoForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            const name = this.name.value;
-            if (!name) {
-                alert('请输入姓名！');
-                return;
-            }
-            alert('提交成功！您的姓名是：' + name);
-        });
-
-        const courseItems = document.querySelectorAll('.course-item');
-        courseItems.forEach(item => {
-            item.addEventListener('mouseover', function() {
-                this.style.transform = 'scale(1.05)';
-                this.style.transition = 'transform 0.3s';
-            });
-            item.addEventListener('mouseout', function() {
-                this.style.transform = 'scale(1)';
-            });
-        });
-    </script>
 </body>
 </html>
-
 
