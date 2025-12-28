@@ -30,7 +30,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const btn = document.getElementById('bgmBtn');
     
     if (audio && btn) {
-        btn.textContent = audio.paused ? '播放背景音乐' : '暂停背景音乐';
+        btn.textContent = audio.paused ? '播放背景音乐(Bad Apple 25时&钢琴版)' : '暂停背景音乐';
         
         btn.addEventListener('click', function() {
             if (audio.paused) {
@@ -39,18 +39,18 @@ document.addEventListener('DOMContentLoaded', function() {
                 if (playPromise !== undefined) {
                     playPromise.then(() => {
                         // 播放成功
-                        btn.textContent = '暂停背景音';
+                        btn.textContent = '暂停背景音乐';
                         btn.classList.add('playing');
                     }).catch(error => {
                         // 播放失败
                         console.error('播放失败:', error);
-                        alert('音频播放失败，请检查音频文件或浏览器设置。\n\n可能的原因：\n1. 音频文件路径不正确\n2. 浏览器自动播放策略限制\n3. 音频文件格式不支持');
+                        alert('音频播放失败，请检查音频文件或浏览器设置。\n\n可能的原因：\n1. 浏览器自动播放策略限制\n2. 音频文件格式不支持');
                     });
                 }
             } else {
                 // 暂停音乐
                 audio.pause();
-                btn.textContent = '播放背景音乐';
+                btn.textContent = '继续播放音乐';
                 btn.classList.remove('playing');
             }
         });
@@ -86,4 +86,5 @@ document.addEventListener('DOMContentLoaded', function() {
             btn.style.opacity = '0.5';
         });
     }
+
 });
