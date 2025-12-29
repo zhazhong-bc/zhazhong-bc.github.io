@@ -25,13 +25,44 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    // 背景音乐
+    // 背景音乐控制 - 优化版本
     const audio = document.getElementById('bgm');
     const btn = document.getElementById('bgmBtn');
     
     if (audio && btn) {
-        btn.textContent = audio.paused ? '播放背景音乐(Bad Apple 25时&钢琴版)' : '暂停背景音乐';
+        // 状态同步函数
+        function updateMusicButtonState() {
+            btn.textContent = audio.paused ? 
+                '播放背景音乐(Bad Apple 25时&钢琴版)' : 
+                '暂停背景音乐';
+            if (audio.paused) {
+                btn.classList.remove('playing');
+            } else {
+                btn.classList.add('playing');
+            }
+        }
         
+        // 初始状态设置
+        updateMusicButtonState();
+        
+        // 音频播放/暂停事件监听
+        audio.addEventListener('play', updateMusicButtonState);
+        audio.addEventListener('pause', updateMusicButtonState);
+        
+        // 音频播放结束事件
+        audio.addEventListener('ended', function() {
+            console.log('背景音乐播放结束');
+            // 可以在这里添加播放结束后的操作，如循环播放等
+        });
+        
+        // 音频加载错误事件
+        audio.addEventListener('error', function(e) {
+            console.error('音频加载错误:', e);
+            btn.textContent = '音频加载失败';
+            btn.classList.add('error');
+        });
+        
+        // 按钮点击事件
         btn.addEventListener('click', function() {
             if (audio.paused) {
                 const playPromise = audio.play();
@@ -39,54 +70,85 @@ document.addEventListener('DOMContentLoaded', function() {
                 if (playPromise !== undefined) {
                     playPromise.then(() => {
                         // 播放成功
-                        btn.textContent = '暂停背景音乐';
-                        btn.classList.add('playing');
+                        console.log('背景音乐开始播放');
                     }).catch(error => {
                         // 播放失败
                         console.error('播放失败:', error);
-                        alert('音频播放失败，请检查音频文件或浏览器设置。\n\n可能的原因：\n1. 浏览器自动播放策略限制\n2. 音频文件格式不支持\n3. 音频文件还在预加载中');
+                        
+                        // 更友好的错误提示（可选）
+                        const errorMsg = document.createElement('div');
+                        errorMsg.className = 'error-message';
+                        errorMsg.innerHTML = `
+                            <p>音频播放失败，请检查：</p>
+                            <ul>
+                                <li>浏览器是否支持自动播放</li>
+                                <li>音频文件是否存在</li>
+                                <li>是否允许网站播放声音</li>
+                            </ul>
+                            <p><small>点击关闭</small></p>
+                        `;
+                        errorMsg.style.cssText = `
+                            position: fixed;
+                            top: 50%;
+                            left: 50%;
+                            transform: translate(-50%, -50%);
+                            background: rgba(0,0,0,0.9);
+                            color: white;
+                            padding: 20px;
+                            border-radius: 10px;
+                            z-index: 1000;
+                            max-width: 300px;
+                            text-align: left;
+                        `;
+                        errorMsg.addEventListener('click', function() {
+                            document.body.removeChild(this);
+                        });
+                        document.body.appendChild(errorMsg);
                     });
                 }
             } else {
                 // 暂停音乐
                 audio.pause();
-                btn.textContent = '继续播放音乐';
-                btn.classList.remove('playing');
+                console.log('背景音乐已暂停');
             }
-        });
-        
-        // 添加音频加载错误处理
-        audio.addEventListener('error', function(e) {
-            console.error('音频加载错误:', e);
-            console.log('音频错误代码:', audio.error.code);
-            console.log('音频错误信息:', audio.error.message);
-            
-            if (audio.error) {
-                switch(audio.error.code) {
-                    case MediaError.MEDIA_ERR_ABORTED:
-                        alert('音频加载被中止');
-                        break;
-                    case MediaError.MEDIA_ERR_NETWORK:
-                        alert('网络错误，音频加载失败');
-                        break;
-                    case MediaError.MEDIA_ERR_DECODE:
-                        alert('音频解码错误');
-                        break;
-                    case MediaError.MEDIA_ERR_SRC_NOT_SUPPORTED:
-                        alert('音频格式不支持或文件路径错误');
-                        break;
-                    default:
-                        alert('音频加载失败，请检查音频文件');
-                }
-            }
-            
-            // 禁用播放按钮
-            btn.disabled = true;
-            btn.textContent = '❌ 音频不可用';
-            btn.style.opacity = '0.5';
         });
     }
 
+    // 兼容性检查（可选）
+    function checkAudioCompatibility() {
+        const audioTest = new Audio();
+        const canPlayMP3 = audioTest.canPlayType('audio/mpeg');
+        const canPlayWAV = audioTest.canPlayType('audio/wav');
+        const canPlayOGG = audioTest.canPlayType('audio/ogg');
+        
+        console.log('音频格式支持情况:');
+        console.log('MP3:', canPlayMP3);
+        console.log('WAV:', canPlayWAV);
+        console.log('OGG:', canPlayOGG);
+        
+        // 如果都不支持，给出提示
+        if (!canPlayMP3 && !canPlayWAV && !canPlayOGG) {
+            console.warn('当前浏览器可能不支持音频播放');
+        }
+    }
+    
+    // 在页面加载后检查兼容性
+    setTimeout(checkAudioCompatibility, 1000);
+
+    // 添加快捷键支持
+    document.addEventListener('keydown', function(e) {
+        // 空格键控制播放/暂停
+        if (e.code === 'Space' && audio && btn) {
+            e.preventDefault(); // 防止页面滚动
+            btn.click(); // 模拟点击按钮
+        }
+        
+        // ESC键关闭所有弹窗
+        if (e.code === 'Escape') {
+            const errorMessages = document.querySelectorAll('.error-message');
+            errorMessages.forEach(msg => {
+                document.body.removeChild(msg);
+            });
+        }
+    });
 });
-
-
