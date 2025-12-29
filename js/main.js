@@ -44,7 +44,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     }).catch(error => {
                         // 播放失败
                         console.error('播放失败:', error);
-                        alert('音频播放失败，请检查音频文件或浏览器设置。\n\n可能的原因：\n1. 浏览器自动播放策略限制\n2. 音频文件格式不支持');
+                        alert('音频播放失败，请检查音频文件或浏览器设置。\n\n可能的原因：\n1. 浏览器自动播放策略限制\n2. 音频文件格式不支持\n3. 音频文件还在预加载中');
                     });
                 }
             } else {
@@ -88,4 +88,5 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
 });
+
 
